@@ -1,10 +1,22 @@
 /** @format */
 
+import { Container } from "react-bootstrap";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Home from "./containers/Home";
+
 const App = () => {
 	return (
-		<div className="App">
-			<p>Welcome to buying wines online</p>
-		</div>
+		<>
+			<Header />
+			<main className="py-3">
+				<Container>
+					<Home />
+				</Container>
+			</main>
+
+			<Footer />
+		</>
 	);
 };
 
