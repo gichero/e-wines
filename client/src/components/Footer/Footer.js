@@ -8,7 +8,9 @@ const Footer = () => {
 		<footer>
 			<Container>
 				<Row>
-					<Col className="text-center py-3">Copyright &copy; wines</Col>
+					<Col className="text-center py-3">
+						Copyright &copy; {new Date().getFullYear()} wines
+					</Col>
 				</Row>
 			</Container>
 		</footer>
