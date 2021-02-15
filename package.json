@@ -1,0 +1,22 @@
+{
+  "name": "e-wine",
+  "version": "1.0.0",
+  "description": "MERN",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gichero/e-wines.git"
+  },
+  "author": "Gichero",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gichero/e-wines/issues"
+  },
+  "homepage": "https://github.com/gichero/e-wines#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
