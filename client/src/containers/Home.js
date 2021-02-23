@@ -4,7 +4,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product/Product";
-import { listProducts } from "../actions/productActions";
+import Message from "../components/Message/Message";
+import Loader from "../components/Loader/Loader";
+import { listProductsAction } from "../actions/productActions";
 
 const Home = () => {
 	const dispatch = useDispatch();
@@ -14,16 +16,16 @@ const Home = () => {
 	const { loading, products, error } = productList;
 
 	useEffect(() => {
-		dispatch(listProducts());
+		dispatch(listProductsAction());
 	}, [dispatch]);
 
 	return (
 		<>
 			<h1>products</h1>
 			{loading ? (
-				<h2>Loading...</h2>
+				<Loader />
 			) : error ? (
-				<h3>{error}</h3>
+				<Message variant="danger">{error}</Message>
 			) : (
 				<Row>
 					{products.map((product) => (
