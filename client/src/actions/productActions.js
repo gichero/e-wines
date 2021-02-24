@@ -1,5 +1,6 @@
 /** @format */
 
+import axios from "axios";
 import {
 	PRODUCT_LIST_REQUEST,
 	PRODUCT_LIST_SUCCESS,
@@ -8,8 +9,6 @@ import {
 	PRODUCT_DETAILS_SUCCESS,
 	PRODUCT_DETAILS_FAIL,
 } from "../actions/actionTypes";
-
-import axios from "axios";
 
 export const listProductsAction = () => async (dispatch) => {
 	try {
