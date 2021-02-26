@@ -85,8 +85,9 @@ const ProductPage = ({ history, match }) => {
 										</Col>
 									</Row>
 								</ListGroup.Item>
+
 								{product.countInStock > 0 && (
-									<ListGroupItem>
+									<ListGroup.Item>
 										<Row>
 											<Col>Qty</Col>
 											<Col>
@@ -103,7 +104,7 @@ const ProductPage = ({ history, match }) => {
 												</Form.Control>
 											</Col>
 										</Row>
-									</ListGroupItem>
+									</ListGroup.Item>
 								)}
 								<ListGroup.Item>
 									<Button
