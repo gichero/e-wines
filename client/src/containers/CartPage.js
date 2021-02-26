@@ -12,7 +12,7 @@ import {
 	Button,
 	Card,
 } from "react-bootstrap";
-import { addToCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 import Message from "../components/Message/Message";
 
 const CartPage = ({ match, location, history }) => {
@@ -31,8 +31,12 @@ const CartPage = ({ match, location, history }) => {
 		}
 	}, [dispatch, productId, qty]);
 
-	const removeFromCartHandler = () => {
-		console.log("remove");
+	const removeFromCartHandler = (id) => {
+		dispatch(removeFromCart(id));
+	};
+
+	const checkoutHandler = () => {
+		history.push("/login?redirect=shipping");
 	};
 
 	return (
@@ -54,7 +58,7 @@ const CartPage = ({ match, location, history }) => {
 									<Col md={3}>
 										<Link to={`/product/${item.product}`}>{item.name}</Link>
 									</Col>
-									<Col md={2}>${item.price}</Col>
+									<Col md={2}>$ {item.price}</Col>
 									<Col md={2}>
 										<Form.Control
 											as="select"
@@ -87,8 +91,39 @@ const CartPage = ({ match, location, history }) => {
 					</ListGroup>
 				)}
 			</Col>
-			<Col md={2}></Col>
-			<Col md={2}></Col>
+			<Col md={4}>
+				<ListGroup variant="flush">
+					<ListGroup.Item>
+						<h2>
+							Subtotal (
+							{cartItems.reduce(
+								(accumulator, item) => accumulator + item.qty,
+								0
+							)}
+							) Items{" "}
+						</h2>
+						<h2>
+							${" "}
+							{cartItems
+								.reduce(
+									(accumulator, item) => accumulator + item.qty * item.price,
+									0
+								)
+								.toFixed(2)}
+						</h2>
+					</ListGroup.Item>
+					<ListGroup.Item>
+						<Button
+							type="button"
+							className="btn-block"
+							disabled={cartItems.length === 0}
+							onClick={checkoutHandler}
+						>
+							Checkout
+						</Button>
+					</ListGroup.Item>
+				</ListGroup>
+			</Col>
 		</Row>
 	);
 };
