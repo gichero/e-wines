@@ -10,7 +10,6 @@ import {
 	ListGroup,
 	Card,
 	Button,
-	ListGroupItem,
 	Form,
 } from "react-bootstrap";
 import Rating from "../components/Rating/Rating";
@@ -60,7 +59,7 @@ const ProductPage = ({ history, match }) => {
 									text={`${product.numReviews} reviews`}
 								/>
 							</ListGroup.Item>
-							<ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+							<ListGroup.Item>Price: $ {product.price}</ListGroup.Item>
 							<ListGroup.Item>
 								Description: {product.description}
 							</ListGroup.Item>
@@ -73,7 +72,7 @@ const ProductPage = ({ history, match }) => {
 									<Row>
 										<Col>Price:</Col>
 										<Col>
-											<strong>{product.price}</strong>
+											<strong>$ {product.price}</strong>
 										</Col>
 									</Row>
 								</ListGroup.Item>
