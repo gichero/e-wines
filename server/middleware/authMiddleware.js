@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
 
-export const protect = asyncHandler(async (req, res, next) => {
+const protect = asyncHandler(async (req, res, next) => {
 	let token;
 
 	if (
@@ -23,15 +23,23 @@ export const protect = asyncHandler(async (req, res, next) => {
 			next();
 		} catch (error) {
 			console.error(error);
-			res.status(401);
-			throw new Error("Not Authorized, Token failed");
+
+			res
+				.status(401)
+				.json({ status: "error", error: "Not Authorized, Token failed" });
+
+			// throw new Error("Not Authorized, Token failed");
 		}
 	}
 	if (!token) {
-		res.status(401);
+		res
+			.status(401)
+			.json({ status: "error", error: "Not authorized, no token" });
 
-		throw new Error("Not authorized, no token");
+		// throw new Error("Not authorized, no token");
 	}
 
 	next();
 });
+
+export { protect };
