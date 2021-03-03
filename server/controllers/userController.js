@@ -35,14 +35,14 @@ export const getUserProfile = asyncHandler(async (req, res) => {
 	const user = await User.findById(req.user._id);
 
 	if (user) {
-		res.status(200).json({
+		res.json({
 			_id: user._id,
 			name: user.name,
 			email: user.email,
 			isAdmin: user.isAdmin,
 		});
 	} else {
-		return res.status(404).json({ status: "error", error: "User not found" });
-		// throw new Error("User not found");
+		res.status(404);
+		throw new Error("User Not Found");
 	}
 });
