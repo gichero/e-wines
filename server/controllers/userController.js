@@ -5,7 +5,7 @@ import generateToken from "../utils/generateToken.js";
 import User from "../models/userModel.js";
 
 // @desc Auth user & get token
-// @route POST /api/user
+// @route POST /api/users/login
 // @access Public
 
 export const authUser = asyncHandler(async (req, res) => {
