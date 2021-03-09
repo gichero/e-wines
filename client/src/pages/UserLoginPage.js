@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message/Message";
 import Loader from "../components/Loader/Loader";
 import FormContainer from "../components/FormContainer/FormContainer";
-import { userLogin } from "../actions/userActions";
+import { login } from "../actions/userActions";
 
 const UserLoginPage = ({ location, history }) => {
 	const [email, setEmail] = useState("");
@@ -15,8 +15,8 @@ const UserLoginPage = ({ location, history }) => {
 
 	const dispatch = useDispatch();
 
-	const login = useSelector((state) => state.userLogin);
-	const { loading, error, userInfo } = login;
+	const userLogin = useSelector((state) => state.userLogin);
+	const { loading, error, userInfo } = userLogin;
 
 	const redirect = location.search ? location.search.split("=")[1] : "/";
 
@@ -28,7 +28,7 @@ const UserLoginPage = ({ location, history }) => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		dispatch(userLogin(email, password));
+		dispatch(login(email, password));
 	};
 
 	return (
@@ -45,6 +45,9 @@ const UserLoginPage = ({ location, history }) => {
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 					></Form.Control>
+				</Form.Group>
+				<Form.Group controlId="password">
+					<Form.Label>Password</Form.Label>
 					<Form.Control
 						type="password"
 						placeholder="enter password"
@@ -52,6 +55,7 @@ const UserLoginPage = ({ location, history }) => {
 						onChange={(e) => setPassword(e.target.value)}
 					></Form.Control>
 				</Form.Group>
+
 				<Button type="submit" variant="primary">
 					Sign In
 				</Button>

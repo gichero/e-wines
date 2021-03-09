@@ -27,6 +27,7 @@ const Header = () => {
 					</LinkContainer>
 
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
+
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="ml-auto">
 							<LinkContainer to="/cart">
@@ -34,8 +35,9 @@ const Header = () => {
 									<i className="fas fa-shopping-cart"></i> Cart
 								</Nav.Link>
 							</LinkContainer>
+
 							{userInfo ? (
-								<NavDropdown title={userInfo.data.name} id="username">
+								<NavDropdown title={userInfo.name} id="username">
 									<LinkContainer to="/profile">
 										<NavDropdown.Item>Profile</NavDropdown.Item>
 									</LinkContainer>
@@ -46,7 +48,7 @@ const Header = () => {
 							) : (
 								<LinkContainer to="/login">
 									<Nav.Link>
-										<i className="fas fa-user"></i> Signin
+										<i className="fas fa-user"></i> Sign In
 									</Nav.Link>
 								</LinkContainer>
 							)}
