@@ -21,7 +21,7 @@ const Home = () => {
 
 	return (
 		<>
-			<h1>products</h1>
+			<h1>Products</h1>
 			{loading ? (
 				<Loader />
 			) : error ? (
