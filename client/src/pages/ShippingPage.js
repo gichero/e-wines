@@ -1,13 +1,13 @@
 /** @format */
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message/Message";
 import Loader from "../components/Loader/Loader";
 import FormContainer from "../components/FormContainer/FormContainer";
 import { saveShippingAddress } from "../actions/cartActions";
+import CheckoutSteps from "../components/CheckoutSteps/CheckoutSteps";
 
 const ShippingPage = ({ history }) => {
 	const cart = useSelector((state) => state.cart);
@@ -28,6 +28,7 @@ const ShippingPage = ({ history }) => {
 
 	return (
 		<FormContainer>
+			<CheckoutSteps step1 step2 />
 			<h1>Shipping</h1>
 
 			<Form onSubmit={submitHandler}>
