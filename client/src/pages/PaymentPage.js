@@ -3,8 +3,6 @@
 import React, { useState } from "react";
 import { Form, Button, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message/Message";
-import Loader from "../components/Loader/Loader";
 import FormContainer from "../components/FormContainer/FormContainer";
 import CheckoutSteps from "../components/CheckoutSteps/CheckoutSteps";
 import { savePaymentMethod } from "../actions/cartActions";
@@ -18,11 +16,6 @@ const PaymentPage = ({ history }) => {
 	}
 
 	const [paymentMethod, setPaymentMethod] = useState("PayPal");
-
-	const [address, setAddress] = useState(shippingAddress.address);
-	const [city, setCity] = useState(shippingAddress.city);
-	const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
-	const [country, setCountry] = useState(shippingAddress.country);
 
 	const dispatch = useDispatch();
 
