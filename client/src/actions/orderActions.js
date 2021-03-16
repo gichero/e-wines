@@ -21,5 +21,19 @@ export const createOrder = (order) => async (dispatch, getState) => {
 				Authorization: `Bearer ${userInfo.token}`,
 			},
 		};
-	} catch (error) {}
+
+		const { data } = await axios.post("/api/orders", order, config);
+		dispatch({
+			type: ORDER_CREATE_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		dispatch({
+			type: ORDER_CREATE_FAIL,
+			payload:
+				error.response && ErrorEvent.data.message
+					? error.response.data.message
+					: error.message,
+		});
+	}
 };
