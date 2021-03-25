@@ -3,8 +3,6 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message/Message";
-import Loader from "../components/Loader/Loader";
 import FormContainer from "../components/FormContainer/FormContainer";
 import { saveShippingAddress } from "../actions/cartActions";
 import CheckoutSteps from "../components/CheckoutSteps/CheckoutSteps";
