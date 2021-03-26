@@ -22,9 +22,9 @@ const PlaceOrderPage = ({ history }) => {
 		cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
 	);
 
-	cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 25);
+	cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 15);
 
-	cart.taxPrice = addDecimals(Number(0.15 * cart.itemsPrice).toFixed(2));
+	cart.taxPrice = addDecimals(Number(0.05 * cart.itemsPrice).toFixed(2));
 
 	cart.totalPrice = (
 		Number(cart.itemsPrice) +
@@ -143,9 +143,11 @@ const PlaceOrderPage = ({ history }) => {
 									<Col>${cart.totalPrice}</Col>
 								</Row>
 							</ListGroup.Item>
+
 							<ListGroup.Item>
 								{error && <Message variant="danger">{error}</Message>}
 							</ListGroup.Item>
+
 							<ListGroup.Item>
 								<Button
 									type="button"
