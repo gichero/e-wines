@@ -161,7 +161,7 @@ export const updateUser = asyncHandler(async (req, res) => {
 
 		user.email = req.body.email || user.email;
 
-		user.isAdmin = req.body.isAdmin || user.isAdmin;
+		user.isAdmin = req.body.isAdmin;
 
 		const updatedUser = await user.save();
 
