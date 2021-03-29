@@ -92,6 +92,9 @@ export const register = (name, email, password) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
 	localStorage.removeItem("userInfo");
+	localStorage.removeItem("shippingAddress");
+	localStorage.removeItem("paymentMethod");
+	localStorage.removeItem("cartItems");
 	dispatch({ type: USER_LOGOUT });
 	dispatch({ type: USER_DETAILS_RESET });
 	dispatch({ type: ORDER_MY_LIST_RESET });
