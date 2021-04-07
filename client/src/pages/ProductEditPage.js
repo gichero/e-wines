@@ -15,6 +15,7 @@ import { PRODUCT_UPDATE_RESET } from "../actions/actionTypes";
 
 const ProductEditPage = ({ match, history }) => {
 	const productId = match.params.id;
+
 	const [name, setName] = useState("");
 	const [price, setPrice] = useState(0);
 	const [image, setImage] = useState("");
@@ -106,16 +107,6 @@ const ProductEditPage = ({ match, history }) => {
 							></Form.Control>
 						</Form.Group>
 
-						<Form.Group controlId="brand">
-							<Form.Label>Brand</Form.Label>
-							<Form.Control
-								type="text"
-								placeholder="enter brand"
-								value={brand}
-								onChange={(e) => setBrand(e.target.value)}
-							></Form.Control>
-						</Form.Group>
-
 						<Form.Group controlId="image">
 							<Form.Label>Image</Form.Label>
 							<Form.Control
@@ -123,6 +114,16 @@ const ProductEditPage = ({ match, history }) => {
 								placeholder="enter image url"
 								value={image}
 								onChange={(e) => setImage(e.target.value)}
+							></Form.Control>
+						</Form.Group>
+
+						<Form.Group controlId="brand">
+							<Form.Label>Brand</Form.Label>
+							<Form.Control
+								type="text"
+								placeholder="enter brand"
+								value={brand}
+								onChange={(e) => setBrand(e.target.value)}
 							></Form.Control>
 						</Form.Group>
 

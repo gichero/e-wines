@@ -44,7 +44,7 @@ export const deleteProduct = asyncHandler(async (req, res) => {
 export const createProduct = asyncHandler(async (req, res) => {
 	const product = new Product({
 		name: "Sample name",
-		price: 1,
+		price: 0,
 		user: req.user._id,
 		image: "/images/sample.jpg",
 		brand: "Sample brand",
