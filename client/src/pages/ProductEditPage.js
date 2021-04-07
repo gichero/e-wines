@@ -17,7 +17,7 @@ const ProductEditPage = ({ match, history }) => {
 	const productId = match.params.id;
 	const [name, setName] = useState("");
 	const [price, setPrice] = useState(0);
-	const [image, setImage] = useState();
+	const [image, setImage] = useState("");
 	const [brand, setBrand] = useState("");
 	const [category, setCategory] = useState("");
 	const [countInStock, setCountInStock] = useState(0);
@@ -99,7 +99,7 @@ const ProductEditPage = ({ match, history }) => {
 						<Form.Group controlId="price">
 							<Form.Label>Price</Form.Label>
 							<Form.Control
-								type="price"
+								type="number"
 								placeholder="enter price"
 								value={price}
 								onChange={(e) => setPrice(e.target.value)}
@@ -109,18 +109,18 @@ const ProductEditPage = ({ match, history }) => {
 						<Form.Group controlId="brand">
 							<Form.Label>Brand</Form.Label>
 							<Form.Control
-								type="brand"
+								type="text"
 								placeholder="enter brand"
 								value={brand}
-								onChange={(e) => setPrice(e.target.value)}
+								onChange={(e) => setBrand(e.target.value)}
 							></Form.Control>
 						</Form.Group>
 
 						<Form.Group controlId="image">
 							<Form.Label>Image</Form.Label>
 							<Form.Control
-								type="image"
-								placeholder="enter image"
+								type="text"
+								placeholder="enter image url"
 								value={image}
 								onChange={(e) => setImage(e.target.value)}
 							></Form.Control>
@@ -129,21 +129,21 @@ const ProductEditPage = ({ match, history }) => {
 						<Form.Group controlId="category">
 							<Form.Label>Category</Form.Label>
 							<Form.Control
-								type="category"
-								placeholder="enter price"
+								type="text"
+								placeholder="enter category"
 								value={category}
 								onChange={(e) => setCategory(e.target.value)}
 							></Form.Control>
 						</Form.Group>
 
-						<Form.Group controlId="countIn Stock">
+						<Form.Group controlId="countInStock">
 							<Form.Label>Count in Stock</Form.Label>
-							<Form.Check
-								type="count in stock"
+							<Form.Control
+								type="number"
 								placeholder="count in stock"
 								value={countInStock}
-								onChange={(e) => setCountInStock(e.target.checked)}
-							></Form.Check>
+								onChange={(e) => setCountInStock(e.target.value)}
+							></Form.Control>
 						</Form.Group>
 
 						<Form.Group controlId="description">
