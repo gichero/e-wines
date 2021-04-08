@@ -8,10 +8,10 @@ const router = express.Router();
 
 const storage = multer.diskStorage({
 	destination(req, file, cb) {
-		cd(null, "uploads/");
+		cb(null, "uploads/");
 	},
 	filename(req, file, cb) {
-		cd(
+		cb(
 			null,
 			`${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
 		);
