@@ -162,14 +162,15 @@ const ProductPage = ({ history, match }) => {
 							)}
 
 							<ListGroup variant="flush">
-								{product.reviews.map((review) => (
-									<ListGroup.Item key={review._id}>
-										<strong>{review.name}</strong>
-										<Rating value={review.rating} />
-										<p>{review.createdAt.substring(0, 10)}</p>
-										<p>{review.comment}</p>
-									</ListGroup.Item>
-								))}
+								{product.reviews &&
+									product.reviews.map((review) => (
+										<ListGroup.Item key={review._id}>
+											<strong>{review.name}</strong>
+											<Rating value={review.rating} />
+											<p>{review.createdAt.substring(0, 10)}</p>
+											<p>{review.comment}</p>
+										</ListGroup.Item>
+									))}
 
 								<ListGroup.Item>
 									<h2>Write a Customer Review</h2>
@@ -204,6 +205,7 @@ const ProductPage = ({ history, match }) => {
 												<Form.Control
 													as="textarea"
 													row="3"
+													value={comment}
 													onChange={(e) => setComment(e.target.value)}
 												></Form.Control>
 											</Form.Group>
