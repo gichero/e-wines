@@ -8,15 +8,16 @@ import Message from "../components/Message/Message";
 import Loader from "../components/Loader/Loader";
 import { listProductsAction } from "../actions/productActions";
 
-const Home = () => {
+const HomePage = ({ match }) => {
+	const keyword = match.params.keyword;
 	const dispatch = useDispatch();
 
 	const productList = useSelector((state) => state.productList);
 	const { loading, products, error } = productList;
 
 	useEffect(() => {
-		dispatch(listProductsAction());
-	}, [dispatch]);
+		dispatch(listProductsAction(keyword));
+	}, [dispatch, keyword]);
 
 	return (
 		<>
@@ -38,4 +39,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default HomePage;

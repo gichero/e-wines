@@ -4,7 +4,7 @@ import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Home from "./pages/Home";
+import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import UserLoginPage from "./pages/UserLoginPage";
 import UserRegisterPage from "./pages/UserRegisterPage";
@@ -26,6 +26,7 @@ const App = () => {
 			<Header />
 			<main className="py-3">
 				<Container>
+					<Route path="/search/:keyword" exact component={HomePage} />
 					<Route path="/admin/orderlist" component={OrderListPage} />
 					<Route path="/admin/product/:id/edit" component={ProductEditPage} />
 					<Route path="/admin/productlist" component={ProductListPage} />
@@ -40,7 +41,7 @@ const App = () => {
 					<Route path="/register" component={UserRegisterPage} />
 					<Route path="/login" component={UserLoginPage} />
 					<Route path="/product/:id" component={ProductPage} />
-					<Route path="/" exact component={Home} />
+					<Route path="/" exact component={HomePage} />
 				</Container>
 			</main>
 			<Footer />
