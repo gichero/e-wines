@@ -17,6 +17,9 @@ import {
 	PRODUCT_UPDATE_FAIL,
 	PRODUCT_UPDATE_SUCCESS,
 	PRODUCT_UPDATE_REQUEST,
+	PRODUCT_REVIEW_REQUEST,
+	PRODUCT_REVIEW_SUCCESS,
+	PRODUCT_REVIEW_FAIL,
 } from "./actionTypes";
 
 export const listProductsAction = () => async (dispatch) => {
@@ -147,6 +150,40 @@ export const updateProductAction = (product) => async (dispatch, getState) => {
 	} catch (error) {
 		dispatch({
 			type: PRODUCT_UPDATE_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message,
+		});
+	}
+};
+
+export const reviewProductAction = (productId, review) => async (
+	dispatch,
+	getState
+) => {
+	try {
+		dispatch({ type: PRODUCT_REVIEW_REQUEST });
+
+		const {
+			userLogin: { userInfo },
+		} = getState();
+
+		const config = {
+			headers: {
+				"Content-type": "application/json",
+				Authorization: `Bearer ${userInfo.token}`,
+			},
+		};
+
+		await axios.post(`/api/products/${productId}/reviews`, review, config);
+
+		dispatch({
+			type: PRODUCT_REVIEW_SUCCESS,
+		});
+	} catch (error) {
+		dispatch({
+			type: PRODUCT_REVIEW_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message
