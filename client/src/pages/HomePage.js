@@ -2,11 +2,12 @@
 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, Pagination } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product/Product";
 import Message from "../components/Message/Message";
 import Loader from "../components/Loader/Loader";
 import Paginate from "../components/Paginate/Paginate";
+import ProductCarousel from "../components/ProductCarousel/ProductCarousel";
 import { listProductsAction } from "../actions/productActions";
 
 const HomePage = ({ match }) => {
@@ -23,7 +24,8 @@ const HomePage = ({ match }) => {
 
 	return (
 		<>
-			<h1>Products</h1>
+			{!keyword && <ProductCarousel />}
+
 			{loading ? (
 				<Loader />
 			) : error ? (
